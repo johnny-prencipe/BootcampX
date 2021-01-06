@@ -6,6 +6,7 @@ CREATE TABLE teachers (
   end_date DATE
 );
 
+
 CREATE TABLE assistance_requests (
   id SERIAL PRIMARY KEY NOT NULL,
   -- putting this in here even though it's not in the provided code,
@@ -16,6 +17,6 @@ CREATE TABLE assistance_requests (
   created_at TIMESTAMP,
   started_at TIMESTAMP,
   completed_at TIMESTAMP,
-  student_feedack TEXT,
+  student_feedback TEXT,
   teacher_feedback TEXT
 );
