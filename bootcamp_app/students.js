@@ -8,7 +8,24 @@ const pool = new Pool({
 });
 
 const cohort = process.argv[2];
-const limit = process.argv[3];
+const limit = process.argv[3] || 5;
+const values = [`${cohort}`, limit];
+
+if (!cohort) return console.log(`Please specify a cohort and number of students.`);
+
+const queryString = `
+SELECT
+  students.id as student_id,
+  students.name as name,
+  cohorts.name as cohort
+  FROM students
+
+JOIN cohorts
+  ON cohorts.id = cohort_id
+
+  WHERE cohorts.name LIKE $1
+  LIMIT $2;
+`
 
 pool.query(`
 SELECT
